@@ -83,6 +83,10 @@ io.on("connection", async (socket) => {
     })
 })
 
+app.get("/", (req, res) => {
+    res.send("Server is running")
+})
+
 const PORT = process.env.PORT || 8080;
 
 server.listen(PORT, () => {
