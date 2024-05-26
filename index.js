@@ -33,7 +33,7 @@ io.on("connection", async (socket) => {
     const { id } = socket
 
     socket.on("join-room", async (room) => {
-        // console.log("User joined room:", room)
+        console.log("User joined room:", room)
 
         const subscribedRooms = await redis.smembers("subscribed-rooms")
         await socket.join(room)
@@ -47,7 +47,7 @@ io.on("connection", async (socket) => {
                 } else {
                     await redis.sadd("subscribed-rooms", room)
 
-                    // console.log("Subscribed to room:", room)
+                    console.log("Subscribed to room:", room)
                 }
             })
         }
@@ -75,7 +75,7 @@ io.on("connection", async (socket) => {
                     } else {
                         await redis.srem("subscribed-rooms", room)
 
-                        // console.log("Unsubscribed from room:", room)
+                        console.log("Unsubscribed from room:", room)
                     }
                 })
             }
